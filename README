@@ -1,0 +1,16 @@
+LncPNet
+Predicting lncRNA-Protein Interactions using Heterogeneous Network Embedding
+
+we proposed a computational method LncPNet to predict ncRNA-protein interactions, which made use of Metapath2vec to extract lncRNA and protein features. Specifically, we constructed networks by Jaccard similarity and blast similarity. Then Metapath2vec automatically extracted high-level features from heterogeneous network of lncRNA and protein, finally the high-level features were fed into SVM to predict lncRNA-protein interactions.
+
+Dependency:
+python 3.8
+
+Usage: According to the 0,1, 2, 3… execute LncPNet Python files in sequence. In particular, there are a few things to note: 
+(1)	blast_similar_RNA.txt and blast_similar_protein.txt is the lncRNA similarity pair and the protein similarity pair that meet the threshold conditions calculated by the blast sequence comparison tool;
+(2)	python file 4generate_path.py needs to set 4 parameters, which are numwalks, walklength, dirpath and outfilename, for example:100 500 ./one_blast_network.txt ./one_blast_path;
+(3)	c++ file 5metapath2vec.cpp needs to input the metapath file above generated, for example:one_blast_path, then it will generate lncRNA and protein vetors. The example is as follows: -train one_blast_path -output data/one_blast_vetor.txt –size 64 –window 7 –negative 5 –threads 32
+
+Reference
+
+
